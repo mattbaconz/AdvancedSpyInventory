@@ -13,6 +13,11 @@ These features are:
 
 <img alt="Inventory" align="center" width="33%" src="https://cdn-raw.modrinth.com/data/qAwAjka7/images/149c6da11460c8210012da3c5f5c6738be03c7b7.png" /><img alt="Ender Chest" align="center" width="33%" src="https://cdn-raw.modrinth.com/data/qAwAjka7/images/b3a25195818dd05c09e7d77230368755cc4a07d6.png" /><img alt="Villager Inventory" align="center" width="33%" src="https://cdn.modrinth.com/data/qAwAjka7/images/4c618347bb18dfb3b0faa7e08a5ef40cb65da08e.png" />
 
+## Building for Paper 26.3
+
+Use Java 25 and `./gradlew build` (`gradlew.bat build` on Windows). The plugin is written to `build/libs/AdvancedSpyInventory-2.4.13.jar`.
+This build uses Paper's public development bundle with Mojang names and targets Paper 26.3; the original Maven build is retained for the legacy adapter.
+
 ## Information
 For information on plugin configuration and permissions, you can go to [the wiki](https://github.com/DailyCraft/AdvancedSpyInventory/wiki).\
 If you find a bug or have a suggestion, you can create an [issue](https://github.com/DailyCraft/AdvancedSpyInventory/issues).\

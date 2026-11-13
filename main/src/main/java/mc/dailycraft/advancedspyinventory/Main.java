@@ -104,7 +104,10 @@ public class Main extends JavaPlugin implements Listener {
         try {
             String packageVersion;
 
-            if (Bukkit.getServer().getClass().getName().equals("org.bukkit.craftbukkit.CraftServer")) {
+            String minecraftVersion = Bukkit.getMinecraftVersion();
+            if (minecraftVersion.equals("26.3") || minecraftVersion.startsWith("26.3.")) {
+                packageVersion = "v26_3";
+            } else if (Bukkit.getServer().getClass().getName().equals("org.bukkit.craftbukkit.CraftServer")) {
                 try {
                     packageVersion = (String) Class.forName("io.papermc.paper.util.MappingEnvironment").getField("LEGACY_CB_VERSION").get(null);
                 } catch (ReflectiveOperationException exception) {

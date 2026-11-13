@@ -13,7 +13,6 @@ import org.bukkit.inventory.meta.PotionMeta;
 import org.bukkit.inventory.meta.SkullMeta;
 import org.bukkit.potion.PotionType;
 import org.bukkit.profile.PlayerProfile;
-import org.bukkit.registry.RegistryAware;
 import org.jetbrains.annotations.Nullable;
 
 import java.io.IOException;
@@ -95,9 +94,9 @@ public class ItemStackBuilder {
 
     public ItemStackBuilder hideAdditionalTooltip() {
         try {
-            meta.addItemFlags(ItemFlag.HIDE_BEES);
-            meta.addItemFlags(ItemFlag.HIDE_BLOCK_STATE);
-        } catch (NoSuchFieldError ignored) {} // Paper
+            meta.addItemFlags(ItemFlag.valueOf("HIDE_BEES"));
+            meta.addItemFlags(ItemFlag.valueOf("HIDE_BLOCK_STATE"));
+        } catch (IllegalArgumentException ignored) {} // Paper
         meta.addItemFlags(ItemFlag.HIDE_ADDITIONAL_TOOLTIP);
         return this;
     }
@@ -174,7 +173,7 @@ public class ItemStackBuilder {
             setter.accept(enumeration[--i < 0 ? enumeration.length - 1 : i]);
     }
 
-    public <T extends Keyed & RegistryAware> ItemStackBuilder registryLore(Translation translation, Registry<T> registry, T current, @Nullable Function<T, DyeColor> entryColor, String keyStart) {
+    public <T extends Keyed> ItemStackBuilder registryLore(Translation translation, Registry<T> registry, T current, @Nullable Function<T, DyeColor> entryColor, String keyStart) {
         for (T entry : registry) {
             StringBuilder sb = new StringBuilder(current == entry ? "§2\u25ba§a " : "  ");
             if (entryColor != null)
@@ -188,11 +187,11 @@ public class ItemStackBuilder {
         return this;
     }
 
-    public <T extends Keyed & RegistryAware> ItemStackBuilder registryLore(Translation translation, Registry<T> registry, T current, String keyStart) {
+    public <T extends Keyed> ItemStackBuilder registryLore(Translation translation, Registry<T> registry, T current, String keyStart) {
         return registryLore(translation, registry, current, null, keyStart);
     }
 
-    public static <T extends Keyed & RegistryAware> void registryLoreClick(InventoryClickEvent event, Registry<T> registry, T currentValue, Consumer<T> setter) {
+    public static <T extends Keyed> void registryLoreClick(InventoryClickEvent event, Registry<T> registry, T currentValue, Consumer<T> setter) {
         List<T> list = new ArrayList<>();
         registry.iterator().forEachRemaining(list::add);
         int i = list.indexOf(currentValue);
