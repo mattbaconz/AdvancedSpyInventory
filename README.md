@@ -1,3 +1,8 @@
+> [!NOTE]
+> This fork adds Paper 26.3 support to [AdvancedSpyInventory](https://github.com/DailyCraft/AdvancedSpyInventory) 2.4.13 by DailyCraft. Changed by mattbaconz on 2026-11-13: a 26.3 adapter and a Gradle build ([diff](https://github.com/DailyCraft/AdvancedSpyInventory/compare/master...mattbaconz:AdvancedSpyInventory:paper-26.3)). Download the jar from [Releases](https://github.com/mattbaconz/AdvancedSpyInventory/releases). Report problems with this build in this fork, not upstream.
+>
+> Plugin broken too? [Plugin Rescue](https://discord.gg/kgHNjJsB2t): fixed price, pay after you test.
+
 # AdvancedSpyInventory
 **A plugin to inspect ender chests and inventories of players and entities.**
 
